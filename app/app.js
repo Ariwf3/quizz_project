@@ -5,8 +5,44 @@ let app = {
     dom: {
         render: (html) => {
             document.querySelector("main").innerHTML = html;
-            
-        }
+        },
+        
+        emptyNode: function (node) {
+            while (node.firstChild) {
+                node.removeChild(node.firstChild);
+            }
+        },
+
+        appendHtmlNode: function (container, content) {
+            container.innerHTML = content
+        },
+
+        renderTemplateCopies: function (templateSelector, targetSelector, values, copyInitCallBack) {
+            // Recherche l'élément cible dans l'arbre DOM.
+            let target = document.querySelector(targetSelector);
+
+            // Recherche le template dans l'arbre DOM.
+            let template = document.querySelector(templateSelector);
+
+            // Création d'un fragment de DOM vide.
+            let fragment = document.createDocumentFragment();
+
+            for (let value of values) {
+                // Création d'une copie du template dans l'arbre DOM.
+                let copy = document.importNode(template.content, true);
+
+                // Exécution du callback d'initialisation de la copie du template.
+                copyInitCallBack(copy, value);
+
+                // Insertion de la copie du template dans le fragment de DOM (mieux pour les performances durant la boucle)
+                fragment.appendChild(copy);
+            }
+
+            // Fin de boucle : Insertion du fragment dans l'élément cible dans l'arbre DOM.
+            this.emptyNode(target);
+            target.appendChild(fragment);
+        },
+        
     },
 
 

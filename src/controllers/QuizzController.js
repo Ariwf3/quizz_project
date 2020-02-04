@@ -11,7 +11,7 @@ export default class QuizzController {
 
     showEdit() {
         app.mvc.loadView('edit').
-            then(() => this.listener())
+            then(() => this.edit())
     }
 
     listener() {
@@ -19,7 +19,7 @@ export default class QuizzController {
         // html buttons
         const submitButton = document.getElementById('submit_form')
         const clearButton = document.getElementById('clear_button')
-        
+
         submitButton.addEventListener('click',this.addOnclick.bind(this))
 
         clearButton.addEventListener("click", (e) => {
@@ -74,7 +74,6 @@ export default class QuizzController {
 
             form.append(p)
 
-
         } else {
 
             if (document.querySelector('form>p') !== null) {
@@ -107,7 +106,38 @@ export default class QuizzController {
     }
 
     edit() {
+        // models
+        const questionModel = new QuestionModel()
+        const answerModel = new AnswerModel()
+
+        console.log(questionModel.getAllFromLocalStorage('question'))
+        console.log(questionModel.getAllFromLocalStorage('answer'))
         
+        const questions = questionModel.getAllFromLocalStorage('question')
+        const answers = questionModel.getAllFromLocalStorage('answer')
+        const select = document.getElementById('select')
+        let option = document.createElement('option')
+
+        // liste options
+        for (const question of questions) {
+            
+            app.dom.appendHtmlNode(option, question.title)
+            select.append(option)
+            
+            console.log(question.title)
+            console.log(option)
+        }
+
+        
+
+        // pour après
+       /*  const container = document.getElementById('result')
+        
+        let content = ``
+
+        app.dom.appendHtmlNode(container,p) */
+
+
     }
 
     cleanFields() {
