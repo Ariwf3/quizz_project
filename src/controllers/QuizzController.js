@@ -19,8 +19,8 @@ export default class QuizzController {
         // html buttons
         const submitButton = document.getElementById('submit_form')
         const clearButton = document.getElementById('clear_button')
-
-        submitButton.addEventListener('click',this.addOnclick)
+        
+        submitButton.addEventListener('click',this.addOnclick.bind(this))
 
         clearButton.addEventListener("click", (e) => {
             e.preventDefault()
@@ -49,13 +49,20 @@ export default class QuizzController {
         const checked = checkboxes.filter((checkbox) => checkbox.checked === true)
 
         // values
+        const title = document.getElementById('title').value
         const question = document.getElementById('question').value
         const answer1 = document.getElementById('answer1').value
         const answer2 = document.getElementById('answer2').value
         const answer3 = document.getElementById('answer3').value
 
         // at least one checkbox checked and no empty fields 
-        if (checked.length === 0 || question === '' || answer1 === '' || answer2 === '' || answer3 === '') {
+        if (checked.length === 0
+            || title === ''
+            || question === ''
+            || answer1 === ''
+            || answer2 === ''
+            || answer3 === ''
+        ) {
 
             if (document.querySelector('form>p') !== null) {
                 document.querySelector('form>p').remove()
@@ -79,11 +86,11 @@ export default class QuizzController {
             }
 
             // get values of question and answers with the checkboxes values
-            const questionObj = { question, }
+            const questionObj = { title, question, }
             const answerObj = {
-                answer1: { answer1, value: checkboxes[0].value },
-                answer2: { answer2, value: checkboxes[1].value },
-                answer3: { answer3, value: checkboxes[2].value }
+                answer1: { title, answer1, value: checkboxes[0].value },
+                answer2: { title, answer2, value: checkboxes[1].value },
+                answer3: { title, answer3, value: checkboxes[2].value }
             }
 
             // add objects to previously stated arrays
@@ -93,16 +100,22 @@ export default class QuizzController {
             questionModel.setToLocalStorage('question', allQuestions)
             answerModel.setToLocalStorage('answer', allAnswers)
 
+
             // fields cleaning
-            document.getElementById('question').value = ''
-            document.getElementById('answer1').value = ''
-            document.getElementById('answer2').value = ''
-            document.getElementById('answer3').value = ''
+            this.cleanFields()
         }
     }
 
     edit() {
         
+    }
+
+    cleanFields() {
+        document.getElementById('title').value = ''
+        document.getElementById('question').value = ''
+        document.getElementById('answer1').value = ''
+        document.getElementById('answer2').value = ''
+        document.getElementById('answer3').value = ''
     }
 
 }
