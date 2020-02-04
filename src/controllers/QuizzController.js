@@ -93,8 +93,8 @@ export default class QuizzController {
             allQuestions.push(questionObj)
             allAnswers.push(answerObj)
 
-            questionModel.setToLocalStorage('question', allQuestions)
-            answerModel.setToLocalStorage('answer', allAnswers)
+            new QuestionModel().setToLocalStorage('question', allQuestions)
+            new AnswerModel().setToLocalStorage('answer', allAnswers)
 
 
             // fields cleaning
