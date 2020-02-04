@@ -6,12 +6,34 @@
 <form action="">
     <div class="form-group mt-5">
         <label for="" class="h4 text-info">Choisir une question</label>
-        <select name="" id="select" class="form-control"></select>
+        <select name="questions_select" id="select" class="form-control"></select>
     </div>
+    <button class="btn btn-success" type="submit">Filtrer</button>
 </form>
 
-<div id="result"></div>
+<div id="result" class="mt-5">
+    <h4 class="text-center">Toutes les questions </h4>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Question</th>
+            <th scope="col">Réponses</th>
+            </tr>
+        </thead>
+        <tbody id="tbody_quizz_list">
+            <tr id="tr_quizz">
+                <th scope="row th_id">1</th>
+                <td id="td_title">Mark</td>
+                <td id="td_questions">Otto</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+<!--
 <div>
     <table class="table">
   <thead class="thead-dark">
@@ -99,6 +121,8 @@
   </tbody>
 </table>
 </div>
+
+-->
 
 <!-- <form action="" class="mt-5">
     <div class="form-group">

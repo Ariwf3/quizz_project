@@ -25,13 +25,13 @@ function initializeRouter() {
         }
     );
 
-    // add
+    // add questions
     app.mvc.router.add('/quizz', () => {
             new QuizzController().show();
         }
     );
 
-    // edit
+    // edit questions
     app.mvc.router.add('/edit', () => {
             new QuizzController().showEdit();
         }

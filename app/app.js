@@ -13,8 +13,19 @@ let app = {
             }
         },
 
+        getById: (id) => document.getElementById(id),
+
+        /**
+         * Append a content to a container with innerHTML assignation
+         * @param {string} container 
+         * @param {string} content 
+         */
         appendHtmlNode: function (container, content) {
             container.innerHTML = content
+        },
+
+        appendTextNode: function (container, content) {
+            container.textContent = content
         },
 
         renderTemplateCopies: function (templateSelector, targetSelector, values, copyInitCallBack) {

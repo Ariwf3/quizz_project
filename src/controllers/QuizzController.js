@@ -17,8 +17,8 @@ export default class QuizzController {
     listener() {
 
         // html buttons
-        const submitButton = document.getElementById('submit_form')
-        const clearButton = document.getElementById('clear_button')
+        const submitButton = app.dom.getById('submit_form')
+        const clearButton = app.dom.getById('clear_button')
 
         submitButton.addEventListener('click',this.addOnclick.bind(this))
 
@@ -36,25 +36,22 @@ export default class QuizzController {
         
         const form = document.querySelector('form');
 
-        // models
-        const questionModel = new QuestionModel()
-        const answerModel = new AnswerModel()
 
-        // loading questions/answers lists from local storage
-        const allQuestions = questionModel.getAllFromLocalStorage('question')
-        const allAnswers = answerModel.getAllFromLocalStorage('answer')
+        // loading questions/answers lists from models throught local storage
+        const allQuestions = new QuestionModel().getAllFromLocalStorage('question')
+        const allAnswers = new AnswerModel().getAllFromLocalStorage('answer')
 
         // input checkboxes
         const checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]'))
         const checked = checkboxes.filter((checkbox) => checkbox.checked === true)
 
         // values
-        const title = document.getElementById('title').value
-        const question = document.getElementById('question').value
-        const answer1 = document.getElementById('answer1').value
-        const answer2 = document.getElementById('answer2').value
-        const answer3 = document.getElementById('answer3').value
-
+        const title = app.dom.getById('title').value
+        const question = app.dom.getById('question').value
+        const answer1 = app.dom.getById('answer1').value
+        const answer2 = app.dom.getById('answer2').value
+        const answer3 = app.dom.getById('answer3').value
+        console.log(question)
         // at least one checkbox checked and no empty fields 
         if (checked.length === 0
             || title === ''
@@ -106,46 +103,68 @@ export default class QuizzController {
     }
 
     edit() {
+        
+
         // models
-        const questionModel = new QuestionModel()
-        const answerModel = new AnswerModel()
+        const questions = new QuestionModel().getAllFromLocalStorage('question')
+        const answers = new AnswerModel().getAllFromLocalStorage('answer')
 
-        console.log(questionModel.getAllFromLocalStorage('question'))
-        console.log(questionModel.getAllFromLocalStorage('answer'))
+        console.log('Mes réponses:', answers)
+
+        const select = app.dom.getById('select')
+        const tbody = app.dom.getById('tbody_quizz_list')
         
-        const questions = questionModel.getAllFromLocalStorage('question')
-        const answers = questionModel.getAllFromLocalStorage('answer')
-        const select = document.getElementById('select')
-        let option = document.createElement('option')
-
-        // liste options
-        for (const question of questions) {
-            
-            app.dom.appendHtmlNode(option, question.title)
-            select.append(option)
-            
-            console.log(question.title)
-            console.log(option)
-        }
+        // options for select
+        let options = ''
+        // table row
+        let tr = ''
 
         
-
-        // pour après
-       /*  const container = document.getElementById('result')
         
-        let content = ``
+        // I use forEach because I need the key
+        // list of all
+        questions.forEach( (question, indexQuestion) => {
 
-        app.dom.appendHtmlNode(container,p) */
+            const matchingAnswers = answers.filter((answer, indexAnswer) => indexQuestion === indexAnswer)
+
+            console.log('YATAAAAA', matchingAnswers)
+
+            options += `<option id="${question.title}" value="${question.title}">${question.title}</option>`
+
+            tr += `
+                <tr id="tr_quizz">
+                    <th scope="row th_id">${indexQuestion}</th>
+                    <td id="td_title">${question.title}</td>
+                    <td id="td_questions">${question.question}</td>
+                    <td id="td_answers">
+                        <ul id="answers_ul">
+                            <li>${matchingAnswers[0].answer1.answer1}</li>
+                            <li>${matchingAnswers[0].answer2.answer2}</li>
+                            <li>${matchingAnswers[0].answer3.answer3}</li>
+                        </ul>
+                    </td>
+                </tr>
+            `
+        }); 
+
+        // append datas to html
+        app.dom.appendHtmlNode(select, options)
+        app.dom.appendHtmlNode(tbody, tr)
+
+        // selected question
 
 
     }
 
     cleanFields() {
-        document.getElementById('title').value = ''
-        document.getElementById('question').value = ''
-        document.getElementById('answer1').value = ''
-        document.getElementById('answer2').value = ''
-        document.getElementById('answer3').value = ''
+        app.dom.getById('title').value = ''
+        app.dom.getById('question').value = ''
+        app.dom.getById('answer1').value = ''
+        app.dom.getById('answer2').value = ''
+        app.dom.getById('answer3').value = ''
+        app.dom.getById('answer_checkbox1').checked = false
+        app.dom.getById('answer_checkbox2').checked = false
+        app.dom.getById('answer_checkbox3').checked = false
     }
 
 }
