@@ -5,6 +5,7 @@ import app from './app.js';
 import HomeController from './../src/controllers/HomeController.js';
 import QuizzController from './../src/controllers/QuizzController.js';
 
+
 // --------------------------------------------------------------------------------------------------------------------
 // INITIALISATION DE L'APPLICATION
 // --------------------------------------------------------------------------------------------------------------------
@@ -24,9 +25,15 @@ function initializeRouter() {
         }
     );
 
-    // quizz
+    // add
     app.mvc.router.add('/quizz', () => {
             new QuizzController().show();
+        }
+    );
+
+    // edit
+    app.mvc.router.add('/edit', () => {
+            new QuizzController().showEdit();
         }
     );
 
