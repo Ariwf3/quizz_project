@@ -10,11 +10,11 @@ export default class QuestionModel {
     }
 
     getAllFromLocalStorage(key) {
-        const datas = JSON.parse(localStorage.getItem(key));
+        let datas = JSON.parse(localStorage.getItem(key));
 
         if (datas === null) {
 
-            datas = [];
+            datas = []
 
         }
         return datas

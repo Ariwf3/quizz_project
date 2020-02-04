@@ -4,10 +4,18 @@
 __metadata:
   version: 4
 
+"@fortawesome/fontawesome-free@npm:^5.12.0":
+  version: 5.12.0
+  resolution: "@fortawesome/fontawesome-free@npm:5.12.0"
+  checksum: 40bcdba74a964e92e175e5adca7c5d869248f92e5e93e0b404821245a93226184bc46d2932f166ac65f57a98b781c01b2f00fed805739bb10cae40c007db9fd1
+  languageName: node
+  linkType: hard
+
 "projet_qcm@workspace:.":
   version: 0.0.0-use.local
   resolution: "projet_qcm@workspace:."
   dependencies:
+    "@fortawesome/fontawesome-free": ^5.12.0
     vanilla-router: ^1.2.7
   languageName: unknown
   linkType: soft

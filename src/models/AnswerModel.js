@@ -10,7 +10,7 @@ export default class AnswerModel {
     }
 
     getAllFromLocalStorage(key) {
-        const datas = JSON.parse(localStorage.getItem(key));
+        let datas = JSON.parse(localStorage.getItem(key));
 
         if (datas === null) {
 

@@ -1,9 +1,8 @@
 import app from './app.js';
 
-import config from './config.js';
+// import config from './config.js';
 
 import HomeController from './../src/controllers/HomeController.js';
-import TestController from './../src/controllers/TestController.js';
 import QuizzController from './../src/controllers/QuizzController.js';
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -31,11 +30,7 @@ function initializeRouter() {
         }
     );
 
-    // test
-    app.mvc.router.add('/test', () => {
-            new TestController().show();
-        }
-    );
+
 
     app.mvc.router.check().addUriListener();
 }

@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "locationDiscardData": [
     ],
     "locationLengthData": [
+      115,
       84,
       2
     ],
@@ -41,9 +42,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["@fortawesome/fontawesome-free", "npm:5.12.0"],
             ["vanilla-router", "npm:1.2.7"]
           ],
           "linkType": "SOFT"
+        }]
+      ]],
+      ["@fortawesome/fontawesome-free", [
+        ["npm:5.12.0", {
+          "packageLocation": "./.yarn/cache/@fortawesome-fontawesome-free-npm-5.12.0-ac61788187-1.zip/node_modules/@fortawesome/fontawesome-free/",
+          "packageDependencies": [
+            ["@fortawesome/fontawesome-free", "npm:5.12.0"]
+          ],
+          "linkType": "HARD"
         }]
       ]],
       ["projet_qcm", [
@@ -51,6 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["projet_qcm", "workspace:."],
+            ["@fortawesome/fontawesome-free", "npm:5.12.0"],
             ["vanilla-router", "npm:1.2.7"]
           ],
           "linkType": "SOFT"
