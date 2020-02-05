@@ -1,5 +1,15 @@
 body {
-    background : papayawhip
+    background : papayawhip;
+    font-family: 'Martel Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
+h1,h2,h3,h4,label {
+    font-family: 'Oswald', sans-serif;
+}
+
+a {
+    font-family: 'Sigmar One', cursive;
 }
 
 textarea {
@@ -9,4 +19,25 @@ textarea {
 small {
     font-size: 0.8rem;
     font-style: italic;
+}
+
+ul li {
+    list-style-type: none;
+    list-style-image: url(../images/bullet-list-icon-.png);
+    
+}
+
+.vrai {
+    font-style: oblique;
+    font-weight: bold;
+    color : #2ECC71;
+}
+
+.faux {
+    font-weight: bold;
+    color : #E74C3C;
+}
+
+.error_custom {
+    font-weight: bold;
 }

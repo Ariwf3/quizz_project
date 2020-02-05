@@ -9,24 +9,28 @@
         <label for="" class="h4 text-info">Choisir une question</label>
         <select name="questions_select" id="select" class="form-control"></select>
     </div>
-    <button class="btn btn-success" type="submit" id="select_one_button">Filtrer</button>
+    <div class="text-center">
+        <button class="btn btn-success" type="submit" id="select_one_button">Afficher le formulaire de modification</button>
+        <button class="btn btn-info ml-2" type="submit" id="show_all_button">Voir toutes les questions</button>
+        <button class="btn btn-danger ml-2" type="submit" id="delete_one_button">Supprimer la question sélectionnée</button>
+    </div>
 </form>
 
 <div id="result" class="mt-5">
-    <section id="table">
-      <h4 class="text-center">Toutes les questions</h4>
-      <table class="table">
-          <thead class="thead-dark">
-              <tr>
-              <th scope="col">#</th>
-              <th scope="col">Titre</th>
-              <th scope="col">Question</th>
-              <th scope="col">Réponses</th>
-              </tr>
-          </thead>
-          <tbody id="tbody_quizz_list">
-          </tbody>
-      </table>
+    <section id="table" class="d-block">
+        <h4 class="text-center">Toutes les questions</h4>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Question</th>
+                <th scope="col">Réponses</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_quizz_list">
+            </tbody>
+        </table>
     </section>
 
     <!-- EDIT FORM -->
@@ -68,6 +72,8 @@
                 <label class="custom-control-label" for="answer_checkbox3">Vraie si sélectionnée</label>
             </div>
         </div> 
+
+        <button class="btn btn-success" type="submit" id="submit_edit">Soumettre</button>
 </form> 
 </div>
 
