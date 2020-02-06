@@ -2,7 +2,7 @@ import app from "../../app/app.js"
 import QuestionModel from '../models/QuestionModel.js'
 import AnswerModel from '../models/AnswerModel.js'
 
-export default class EditController {
+export default class EditQuizzController {
 
     show() {
         app.mvc.loadView('edit').

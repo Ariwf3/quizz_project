@@ -3,8 +3,8 @@ import app from './app.js';
 // import config from './config.js';
 
 import HomeController from './../src/controllers/HomeController.js';
-import QuizzController from './../src/controllers/QuizzController.js';
-import EditController from './../src/controllers/EditController.js';
+import AddQuizzController from './../src/controllers/AddQuizzController.js';
+import EditQuizzController from './../src/controllers/EditQuizzController.js';
 
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -28,13 +28,13 @@ function initializeRouter() {
 
     // add questions
     app.mvc.router.add('/quizz', () => {
-            new QuizzController().show();
+        new AddQuizzController().show();
         }
     );
 
     // edit questions
     app.mvc.router.add('/edit', () => {
-            new EditController().show();
+            new EditQuizzController().show();
         }
     );
 
