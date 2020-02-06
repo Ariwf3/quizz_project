@@ -4,6 +4,7 @@ import app from './app.js';
 
 import HomeController from './../src/controllers/HomeController.js';
 import QuizzController from './../src/controllers/QuizzController.js';
+import EditController from './../src/controllers/EditController.js';
 
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ function initializeRouter() {
 
     // edit questions
     app.mvc.router.add('/edit', () => {
-            new QuizzController().showEdit();
+            new EditController().show();
         }
     );
 
