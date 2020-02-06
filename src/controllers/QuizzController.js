@@ -35,8 +35,8 @@ export default class QuizzController {
 
 
         // loading questions/answers lists from models throught local storage
-        const allQuestions = new QuestionModel().getAllFromLocalStorage('question')
-        const allAnswers = new AnswerModel().getAllFromLocalStorage('answer')
+        const allStoredQuestions = new QuestionModel().getAllFromLocalStorage('question')
+        const allStoredAnswers = new AnswerModel().getAllFromLocalStorage('answer')
 
         // input checkboxes
         const checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]'))
@@ -87,11 +87,11 @@ export default class QuizzController {
             }
 
             // add objects to previously stated arrays
-            allQuestions.push(questionObj)
-            allAnswers.push(answerObj)
+            allStoredQuestions.push(questionObj)
+            allStoredAnswers.push(answerObj)
 
-            new QuestionModel().setToLocalStorage('question', allQuestions)
-            new AnswerModel().setToLocalStorage('answer', allAnswers)
+            new QuestionModel().setToLocalStorage('question', allStoredQuestions)
+            new AnswerModel().setToLocalStorage('answer', allStoredAnswers)
 
 
             // fields cleaning

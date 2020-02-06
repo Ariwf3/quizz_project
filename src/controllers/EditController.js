@@ -64,7 +64,7 @@ export default class EditController {
         const deleteOneButton = app.dom.getById('delete_one_button')
         const submitEditButton = app.dom.getById('submit_edit')
 
-        showAllButton.addEventListener('click', this.showAllOnClick.bind(this))
+        showAllButton.addEventListener('click', this.selectAllOnClick.bind(this))
 
         selectOneButton.addEventListener('click', this.selectOneOnClick.bind(this))
 
@@ -79,7 +79,7 @@ export default class EditController {
             EVENTS 
     ********************/
 
-    showAllOnClick(e) {
+    selectAllOnClick(e) {
         e.preventDefault()
 
         const editForm = app.dom.getById('form_edit')
@@ -162,8 +162,8 @@ export default class EditController {
 
         const form = document.querySelector('form');
 
-        const allQuestions = new QuestionModel().getAllFromLocalStorage('question')
-        const allAnswers = new AnswerModel().getAllFromLocalStorage('answer')
+        const allStoredQuestions = new QuestionModel().getAllFromLocalStorage('question')
+        const allStoredAnswers = new AnswerModel().getAllFromLocalStorage('answer')
 
         const checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]'))
         const checked = checkboxes.filter((checkbox) => checkbox.checked === true)
@@ -210,16 +210,16 @@ export default class EditController {
                     if (option.selected === true) {
 
                         // If the question has the same value as the value option it matches
-                        const currentQuestion = allQuestions.filter(question => question.title === option.value)
+                        const currentQuestion = allStoredQuestions.filter(question => question.title === option.value)
 
-                        for (let i = 0; i < allQuestions.length; i++) {
-                            const question = allQuestions[i];
+                        for (let i = 0; i < allStoredQuestions.length; i++) {
+                            const storedQuestion = allStoredQuestions[i];
 
-                            // If the question of my localstorage array (allQuestions) has the same title as the  current question we replace with splice with the exact same structure and index
-                            if (question.title === currentQuestion[0].title) {
+                            // If the question of my localstorage array (allStoredQuestions) has the same title as the  current question we replace with splice with the exact same structure and index
+                            if (storedQuestion.title === currentQuestion[0].title) {
 
-                                allQuestions.splice(i, 1, { title, question })
-                                allAnswers.splice(i, 1, {
+                                allStoredQuestions.splice(i, 1, { title, question })
+                                allStoredAnswers.splice(i, 1, {
                                     answer1: { title, answer1, value: checkboxes[0].value },
                                     answer2: { title, answer2, value: checkboxes[1].value },
                                     answer3: { title, answer3, value: checkboxes[2].value }
@@ -228,8 +228,8 @@ export default class EditController {
                             }
                         }
                         // We update the local storage with new datas
-                        new QuestionModel().setToLocalStorage('question', allQuestions)
-                        new QuestionModel().setToLocalStorage('answer', allAnswers)
+                        new QuestionModel().setToLocalStorage('question', allStoredQuestions)
+                        new QuestionModel().setToLocalStorage('answer', allStoredAnswers)
                     }
                 }
                 // Page reloading
@@ -242,8 +242,8 @@ export default class EditController {
     deleteOnClick(e) {
         e.preventDefault()
 
-        const allQuestions = new QuestionModel().getAllFromLocalStorage('question')
-        const allAnswers = new AnswerModel().getAllFromLocalStorage('answer')
+        const allStoredQuestions = new QuestionModel().getAllFromLocalStorage('question')
+        const allStoredAnswers = new AnswerModel().getAllFromLocalStorage('answer')
 
         if (confirm('êtes vous sûrs de vouloir supprimer la question ?')) {
 
@@ -253,20 +253,20 @@ export default class EditController {
 
                 if (option.selected === true) {
 
-                    let currentQuestion = allQuestions.filter(question => question.title === option.value)
+                    let currentQuestion = allStoredQuestions.filter(question => question.title === option.value)
 
-                    for (let i = 0; i < allQuestions.length; i++) {
-                        const question = allQuestions[i];
+                    for (let i = 0; i < allStoredQuestions.length; i++) {
+                        const storedQuestion = allStoredQuestions[i];
                         // Same principle as the edit but we don't need of the structure object or replacement, we just use splice to delete the elements
-                        if (question.title === currentQuestion[0].title) {
-                            allQuestions.splice(i, 1)
-                            allAnswers.splice(i, 1)
+                        if (storedQuestion.title === currentQuestion[0].title) {
+                            allStoredQuestions.splice(i, 1)
+                            allStoredAnswers.splice(i, 1)
                         }
                     }
 
                     // We update the localStorage
-                    new QuestionModel().setToLocalStorage('question', allQuestions)
-                    new QuestionModel().setToLocalStorage('answer', allAnswers)
+                    new QuestionModel().setToLocalStorage('question', allStoredQuestions)
+                    new QuestionModel().setToLocalStorage('answer', allStoredAnswers)
 
                 }
             }
