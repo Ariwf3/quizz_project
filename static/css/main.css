@@ -1,3 +1,5 @@
+
+/* GENERAL */
 body {
     background : papayawhip;
     font-family: 'Martel Sans', sans-serif;
@@ -21,9 +23,22 @@ small {
     font-style: italic;
 }
 
-ul li {
+.error_custom {
+    font-weight: bold;
+}
+
+
+/* EDIT */
+
+/* Titres tableau  */
+#tr_headings th {
+    text-align: center;
+} 
+
+ul#answers_ul li {
     list-style-type: none;
     list-style-image: url(../images/bullet-list-icon-.png);
+    list-style-position: inside;
     
 }
 
@@ -38,6 +53,4 @@ ul li {
     color : #E74C3C;
 }
 
-.error_custom {
-    font-weight: bold;
-}
+

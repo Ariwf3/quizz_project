@@ -2,10 +2,10 @@ import app from "../../app/app.js"
 import QuestionModel from '../models/QuestionModel.js'
 import AnswerModel from '../models/AnswerModel.js'
 
-export default class AddQuizzController {
+export default class PlayQuizzController {
 
     show() {
-        app.mvc.loadView('addQuizz')
+        app.mvc.loadView('playQuizz')
     }
 
 }
