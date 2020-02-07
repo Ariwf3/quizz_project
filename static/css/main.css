@@ -10,7 +10,7 @@ h1,h2,h3,h4,label {
     font-family: 'Oswald', sans-serif;
 }
 
-a {
+a, button {
     font-family: 'Sigmar One', cursive;
 }
 

@@ -32,6 +32,7 @@ export default class AddQuestionController {
         e.preventDefault();
         
         const form = document.querySelector('form');
+        const headingAddQuestion = document.querySelector('#heading_add_question');
 
 
         // loading questions/answers lists from models throught local storage
@@ -58,15 +59,21 @@ export default class AddQuestionController {
             || answer3 === ''
         ) {
 
-            if (document.querySelector('form>p') !== null) {
+            if (document.querySelector('form>p') !== null && document.querySelector('h3#heading_add_question>p') !== null ) {
                 document.querySelector('form>p').remove()
+                document.querySelector('h3#heading_add_question>p').remove()
             }
 
-            let p = document.createElement('p')
-            p.classList.add('text-danger', 'text-center', 'error_custom', 'mt-3');
-            p.textContent = '* Tous les champs doivent êtres remplis et au moins une réponse vraie cochée'
+            let pTop = document.createElement('p')
+            pTop.classList.add('text-danger', 'text-center', 'error_custom', 'mt-3');
+            pTop.textContent = '* Tous les champs doivent êtres remplis et au moins une réponse vraie cochée'
 
-            form.append(p)
+            let pBottom = document.createElement('p')
+            pBottom.classList.add('text-danger', 'text-center', 'error_custom', 'mt-3');
+            pBottom.textContent = '* Tous les champs doivent êtres remplis et au moins une réponse vraie cochée'
+            
+            headingAddQuestion.append(pTop)
+            form.append(pBottom)
 
         } else {
 

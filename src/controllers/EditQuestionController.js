@@ -211,7 +211,7 @@ export default class EditQuestionController {
 
                         // If the question has the same value as the value option it matches
                         const currentQuestion = allStoredQuestions.filter(question => question.title === option.value)
-
+                        console.log(currentQuestion)
                         for (let i = 0; i < allStoredQuestions.length; i++) {
                             const storedQuestion = allStoredQuestions[i];
 

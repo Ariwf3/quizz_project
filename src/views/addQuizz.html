@@ -1,28 +1,38 @@
 
-<h3 class="text-center text-info mt-5"> Ajouter un Quizz</h3>
+<h3 class="text-center text-info mt-5" id="heading_add_quizz"> Ajouter un Quizz</h3>
 
-<div class="row text-center">
+<div class="row text-center mt-5">
+    <!--- COL ADD QUESTION -->
     <div class="col-5">
-        <p>Mes questions</p>
         <div class="jumbotron bg-dark text-light">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
+            <form action="" id="add_questions_quizz_form">
+                <div class="form-group mt-5">
+                    <label for="" class="display-4 mb-5">Choisir une question</label>
+                    <select name="questions_select" id="select_question" class="form-control mb-5"></select>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit" id="add_question_button">Ajouter</button>
+            </form>
+        </div>
     </div>
-    <div class="col">
-        <i class="far fa-hand-point-right display-4"></i>
+
+    <!--- COL ICON -->
+    <div class="col d-flex justify-content-center">
+        <i class="far fa-hand-point-right display-4 align-self-center"></i>
     </div>
+
+    <!--- COL QUESTION LIST -->
     <div class="col-5">
-        <p>Liste</p>
-        <div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
+        <div class="jumbotron bg-dark text-light">
+            <form id="add_quizz_form">
+                <label class="display-4">Quizz en cours</label>
+                <div id="result" class="my-1"></div>
+                <div class="form-group">
+                    <label for="">Nom du qcm</label>
+                    <input type="text" class="form-control" id="qcm_title">
+                </div>
+                <button class="btn btn-primary btn-lg mt-3" href="#" type="submit" id="add_quizz_button">Créer</button>
+            </form>
+        </div>
     </div>
+<!-- END ROW -->
 </div>
